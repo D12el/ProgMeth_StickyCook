@@ -8,21 +8,21 @@ Running the JAR File (Recommended)
 
 The .jar file is the compiled, runnable version of the game.
 
-Install Java: Ensure you have the Java Runtime Environment (JRE) (version 21 is typically recommended) installed on your system.
+1. Install Java: Ensure you have the Java Runtime Environment (JRE) (version 21 is typically recommended) installed on your system.
 https://jdk.java.net/java-se-ri/21
 
-Install JavaSDK for JavaFX lib: Ensure you have the JavaSDK (version 21 is typically recommended) installed on your system.
+2. Install JavaSDK for JavaFX lib: Ensure you have the JavaSDK (version 21 is typically recommended) installed on your system.
 https://gluonhq.com/products/javafx/
 
-Open your Command Prompt (CMD) or Terminal.
+3. Open your Command Prompt (CMD) or Terminal.
 
-Navigate to the directory containing the JAR file.
+4. Navigate to the directory containing the JAR file.
 
-Execute the following command:
+5. Execute the following command:
 
 Bash
 
-java --module-path <path of javaFX sdk lib> --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media -jar StickyCooked.jar
+- java --module-path <path of javaFX sdk lib> --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media -jar StickyCooked.jar
 
 # Document
 
