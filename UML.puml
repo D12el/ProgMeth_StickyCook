@@ -1,0 +1,478 @@
+@startuml
+class logic.button.RestartButton {
++ <<Create>> RestartButton(double,double,int,double,int)
++ void click()
++ void draw(GraphicsContext)
+}
+class logic.item.Bread {
++ <<Create>> Bread(double,double)
++ void draw(GraphicsContext)
++ Item afterSlice()
+}
+class logic.entity.CuttingBoard {
+- int status
+~ boolean onUse
++ <<Create>> CuttingBoard(double,double,int)
++ void pick(Slime)
++ void place(Slime)
++ void use(Slime)
++ void draw(GraphicsContext)
++ boolean isOnUse()
+}
+class logic.item.SlicedBread {
++ <<Create>> SlicedBread(double,double)
++ Item afterUpgrade()
++ void draw(GraphicsContext)
+}
+abstract class logic.button.MenuButton {
+# Rectangle hitBox
++ <<Create>> MenuButton(double,double,int,double,int)
++ boolean isVisible()
+}
+abstract class logic.button.EndButton {
++ <<Create>> EndButton(double,double,int,double,int)
++ boolean isVisible()
+}
+class logic.Inventory {
+- Item item
+- double x
+# boolean visible
++ <<Create>> Inventory(double,double)
++ int getZ()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ Item getItem()
++ void setItem(Item)
++ void setVisible(boolean)
++ void setDestroyed(boolean)
++ double getX()
++ void setX(double)
++ double getY()
++ void setY(double)
+}
+class logic.item.BreadCabbage {
++ <<Create>> BreadCabbage(double,double)
++ void draw(GraphicsContext)
++ Item afterUpgrade()
+}
+class logic.Timer {
+- Timer timer
+- int min
+- double x
++ <<Create>> Timer(double,double)
++ void runTimer()
++ void setTimer(int,int)
++ int getZ()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ boolean isEmpty()
++ int getMin()
++ void setMin(int)
++ int getSec()
++ void setSec(int)
++ String toString()
+}
+class logic.entity.Table {
++ <<Create>> Table(double,double,int)
++ void pick(Slime)
++ void place(Slime)
++ void draw(GraphicsContext)
+}
+class logic.entity.Slime {
+- int speed
+- int animationIndex
+- int animationTick
+- int animationSpeed
+- Entity blockType
+- Pocket pocket
++ <<Create>> Slime(double,double)
++ void update()
++ void animationUpdate()
++ void draw(GraphicsContext)
++ int getSpeed()
++ void setSpeed(int)
++ void pick(Pickable)
++ void place(Placeable)
++ boolean canFuseIngredient(Entity)
++ void fuseIngredient(Entity)
++ void use(Useable)
++ Entity getBlockType()
++ void setBlockType(Entity)
++ Pocket getPocket()
++ void setPocket(Pocket)
+}
+interface logic.item.Sellable {
+~ int sell()
+}
+class input.InputUtility {
+- boolean leftClickTrigger
+- {static} ArrayList<KeyCode> keyboardInputs
++ {static} void setKeyPressed(KeyCode,boolean)
++ {static} boolean getKeyPressed(KeyCode)
++ {static} ArrayList<KeyCode> getKeyboardInputs()
+}
+class logic.item.BreadCabbageMeat {
++ <<Create>> BreadCabbageMeat(double,double)
++ void draw(GraphicsContext)
++ Item afterUpgrade()
+}
+enum logic.GameState {
++  MENU
++  GAME
++  END
++ {static} GameState state
+}
+class logic.button.StartButton {
++ <<Create>> StartButton(double,double,int,int,int)
++ void click()
++ void draw(GraphicsContext)
+}
+class logic.entity.Border {
++ <<Create>> Border(double,double,int)
++ void draw(GraphicsContext)
+}
+class logic.entity.MeatBox {
++ <<Create>> MeatBox(double,double,int)
++ void pick(Slime)
++ void draw(GraphicsContext)
+}
+class logic.GameLogic {
+- {static} List<MenuButton> menuObjectContainer
+- {static} List<EndButton> endObjectContainer
+- List<IRenderable> gameObjectContainer
+- Slime player
+- MenuButton startButton
+- EndButton restartButton
+- Timer timer
+- boolean isGameStart
+- boolean isRunMenu
+- ScoreText scoreText
++ <<Create>> GameLogic()
+- void addNewObject(IRenderable)
+- void addMenuObject(MenuButton)
+- void addEndObject(EndButton)
++ {static} List<MenuButton> getMenuObjectContainer()
++ {static} List<EndButton> getEndObjectContainer()
++ void startGame()
++ void endGame()
++ void runMenu()
++ void logicUpdate()
+}
+abstract class logic.entity.Entity {
+# double x
+# double width
+# int z
+# boolean visible
+# Rectangle hitBox
+# Inventory inventory
++ <<Create>> Entity(double,double,int,double,double)
+# void drawHItBox(GraphicsContext)
++ void setHitBox(double,double,double,double)
++ Rectangle getHitBox()
++ boolean isDestroyed()
++ boolean isVisible()
++ int getZ()
++ Inventory getInventory()
++ void setDestroyed(boolean)
++ void setVisible(boolean)
++ void setInventory(Inventory)
+}
+class logic.entity.BreadBox {
++ <<Create>> BreadBox(double,double,int)
++ void pick(Slime)
++ void draw(GraphicsContext)
+}
+class drawing.GameScreen {
+- int frames
+- long lastTime
++ {static} int TILES_SIZE
++ {static} int AMOUNT_TILES_IN_WIDTH
++ {static} int AMOUNT_TILES_IN_HEIGHT
++ {static} int GAME_WIDTH
++ {static} int GAME_HEIGHT
+- {static} ArrayList<MenuButton> menuButtons
+- {static} ArrayList<EndButton> endButtons
++ <<Create>> GameScreen()
++ void addListener()
++ boolean isOn(MouseEvent,Button)
++ void addButton()
++ void paintComponent()
+}
+abstract class logic.button.Button {
+# double x
+# int z
+- boolean isMouseOver
+# double width
+# boolean visible
+# Rectangle hitBox
++ <<Create>> Button(double,double,int,double,int)
++ void setHitBox(double,double,double,double)
++ Rectangle getHitBox()
++ {abstract}void click()
++ {abstract}boolean isVisible()
++ int getZ()
++ boolean isDestroyed()
++ boolean isMouseOver()
++ void setMouseOver(boolean)
+}
+class logic.Pocket {
+- int money
+- double x
+# boolean visible
++ <<Create>> Pocket(double,double)
++ int getZ()
++ void setVisible(boolean)
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ void setDestroyed(boolean)
++ int getMoney()
++ void setMoney(int)
+}
+interface logic.item.Upgradeable {
+~ Item afterUpgrade()
+}
+class logic.entity.Boat {
++ <<Create>> Boat(double,double,int)
++ void draw(GraphicsContext)
++ void place(Slime)
+}
+class logic.item.SlicedTomato {
++ <<Create>> SlicedTomato(double,double)
++ void draw(GraphicsContext)
+}
+class logic.item.BreadCabbageMeatTomato {
++ <<Create>> BreadCabbageMeatTomato(double,double)
++ void draw(GraphicsContext)
++ Item afterUpgrade()
+}
+interface logic.entity.ability.Useable {
++ void use(Slime)
+}
+class logic.item.Cabbage {
++ <<Create>> Cabbage(double,double)
++ void draw(GraphicsContext)
++ Item afterSlice()
+}
+class logic.item.Burger {
++ <<Create>> Burger(double,double)
++ void draw(GraphicsContext)
++ int sell()
+}
+class logic.MenuBackground {
++ int getZ()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
+}
+class Main {
++ {static} void main(String[])
++ void start(Stage)
+}
+interface logic.entity.ability.Placeable {
+~ void place(Slime)
+}
+interface logic.item.Sliceable {
+~ Item afterSlice()
+}
+class logic.button.HomeButton {
++ <<Create>> HomeButton(double,double,int,double,int)
++ void click()
++ void draw(GraphicsContext)
+}
+class logic.entity.Oven {
+- boolean isCooking
++ <<Create>> Oven(double,double,int)
++ void pick(Slime)
++ void place(Slime)
++ void use(Slime)
++ void draw(GraphicsContext)
++ boolean isCooking()
+}
+class utils.MethodUtils {
++ {static} boolean canPass(double,double,double,double,Entity[][])
++ {static} Entity findBlockType(double,double,Entity[][])
+}
+class sharedObject.RenderableHolder {
+- {static} RenderableHolder instance
+- List<IRenderable> entities
+- Comparator<IRenderable> comparator
++ {static} Image slimeWalkSprite
++ {static} WritableImage[] slimeWalkAnimation
++ {static} WritableImage[] slimeIdleAnimation
++ {static} Image[] state
++ {static} AudioClip pickItemSound
++ {static} MediaPlayer gameBackgroundMusic
++ {static} AudioClip walkSound
++ <<Create>> RenderableHolder()
++ {static} RenderableHolder getInstance()
++ {static} void loadResource()
++ {static} void loadMenuResource()
++ {static} void loadEndResource()
++ {static} void loadAnimation()
++ {static} void loadSound()
++ void add(IRenderable)
++ void update()
++ List<IRenderable> getEntities()
+}
+class logic.entity.TrashCan {
++ <<Create>> TrashCan(double,double,int)
++ void place(Slime)
++ void draw(GraphicsContext)
+}
+class logic.entity.TomatoBox {
++ <<Create>> TomatoBox(double,double,int)
++ void pick(Slime)
++ void draw(GraphicsContext)
+}
+class logic.item.Tomato {
++ <<Create>> Tomato(double,double)
++ void draw(GraphicsContext)
++ Item afterSlice()
+}
+class logic.EndBackground {
++ int getZ()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
+}
+class logic.ScoreText {
+- int score
+- double x
++ <<Create>> ScoreText(double,double)
++ int getZ()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ int getScore()
++ void setScore(int)
+}
+class logic.Field {
+- {static} int[][] field
+- {static} Entity[][] entities
++ {static} Entity[][] getEntities()
++ {static} void loadEntities()
++ int getZ()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
++ {static} int[][] getField()
+}
+class logic.item.SlicedCabbage {
++ <<Create>> SlicedCabbage(double,double)
++ void draw(GraphicsContext)
+}
+interface logic.item.Cookable {
+~ Item afterCooked()
+}
+class logic.entity.CabbageBox {
++ <<Create>> CabbageBox(double,double,int)
++ void pick(Slime)
++ void draw(GraphicsContext)
+}
+class logic.item.Meat {
++ <<Create>> Meat(double,double)
++ void draw(GraphicsContext)
++ Item afterCooked()
+}
+interface logic.entity.ability.Pickable {
+~ void pick(Slime)
+}
+interface sharedObject.IRenderable {
++ int getZ()
++ void draw(GraphicsContext)
++ boolean isDestroyed()
++ boolean isVisible()
+}
+class logic.item.CookedMeat {
++ <<Create>> CookedMeat(double,double)
++ void draw(GraphicsContext)
+}
+abstract class logic.item.Item {
+# boolean visible
+# int z
+# double x
+# String name
++ <<Create>> Item(double,double)
++ int getZ()
++ boolean isDestroyed()
++ boolean isVisible()
++ void setVisible(boolean)
++ void setDestroyed(boolean)
++ void setZ(int)
++ double getX()
++ void setX(double)
++ double getY()
++ void setY(double)
++ String getName()
++ void setName(String)
+}
+
+
+logic.button.EndButton <|-- logic.button.RestartButton
+logic.item.Sliceable <|.. logic.item.Bread
+logic.item.Item <|-- logic.item.Bread
+logic.entity.ability.Placeable <|.. logic.entity.CuttingBoard
+logic.entity.ability.Pickable <|.. logic.entity.CuttingBoard
+logic.entity.ability.Useable <|.. logic.entity.CuttingBoard
+logic.entity.Entity <|-- logic.entity.CuttingBoard
+logic.item.Upgradeable <|.. logic.item.SlicedBread
+logic.item.Item <|-- logic.item.SlicedBread
+sharedObject.IRenderable <|.. logic.button.MenuButton
+logic.button.Button <|-- logic.button.MenuButton
+logic.button.Button <|-- logic.button.EndButton
+sharedObject.IRenderable <|.. logic.Inventory
+logic.item.Upgradeable <|.. logic.item.BreadCabbage
+logic.item.Item <|-- logic.item.BreadCabbage
+sharedObject.IRenderable <|.. logic.Timer
+logic.entity.ability.Pickable <|.. logic.entity.Table
+logic.entity.ability.Placeable <|.. logic.entity.Table
+logic.entity.Entity <|-- logic.entity.Table
+logic.entity.Entity <|-- logic.entity.Slime
+logic.item.Upgradeable <|.. logic.item.BreadCabbageMeat
+logic.item.Item <|-- logic.item.BreadCabbageMeat
+logic.button.MenuButton <|-- logic.button.StartButton
+logic.entity.Entity <|-- logic.entity.Border
+logic.entity.ability.Pickable <|.. logic.entity.MeatBox
+logic.entity.Entity <|-- logic.entity.MeatBox
+sharedObject.IRenderable <|.. logic.entity.Entity
+logic.entity.ability.Pickable <|.. logic.entity.BreadBox
+logic.entity.Entity <|-- logic.entity.BreadBox
+javafx.scene.canvas.Canvas <|-- drawing.GameScreen
+sharedObject.IRenderable <|.. logic.button.Button
+sharedObject.IRenderable <|.. logic.Pocket
+logic.entity.ability.Placeable <|.. logic.entity.Boat
+logic.entity.Entity <|-- logic.entity.Boat
+logic.item.Item <|-- logic.item.SlicedTomato
+logic.item.Upgradeable <|.. logic.item.BreadCabbageMeatTomato
+logic.item.Item <|-- logic.item.BreadCabbageMeatTomato
+logic.item.Sliceable <|.. logic.item.Cabbage
+logic.item.Item <|-- logic.item.Cabbage
+logic.item.Sellable <|.. logic.item.Burger
+logic.item.Item <|-- logic.item.Burger
+sharedObject.IRenderable <|.. logic.MenuBackground
+javafx.application.Application <|-- Main
+logic.button.EndButton <|-- logic.button.HomeButton
+logic.entity.ability.Pickable <|.. logic.entity.Oven
+logic.entity.ability.Placeable <|.. logic.entity.Oven
+logic.entity.ability.Useable <|.. logic.entity.Oven
+logic.entity.Entity <|-- logic.entity.Oven
+logic.entity.ability.Placeable <|.. logic.entity.TrashCan
+logic.entity.Entity <|-- logic.entity.TrashCan
+logic.entity.ability.Pickable <|.. logic.entity.TomatoBox
+logic.entity.Entity <|-- logic.entity.TomatoBox
+logic.item.Sliceable <|.. logic.item.Tomato
+logic.item.Item <|-- logic.item.Tomato
+sharedObject.IRenderable <|.. logic.EndBackground
+sharedObject.IRenderable <|.. logic.ScoreText
+sharedObject.IRenderable <|.. logic.Field
+logic.item.Item <|-- logic.item.SlicedCabbage
+logic.entity.ability.Pickable <|.. logic.entity.CabbageBox
+logic.entity.Entity <|-- logic.entity.CabbageBox
+logic.item.Cookable <|.. logic.item.Meat
+logic.item.Item <|-- logic.item.Meat
+logic.item.Item <|-- logic.item.CookedMeat
+sharedObject.IRenderable <|.. logic.item.Item
+@enduml
