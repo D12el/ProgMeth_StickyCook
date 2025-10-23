@@ -22,7 +22,7 @@ https://gluonhq.com/products/javafx/
 
 Bash
 
-- java --module-path <path of javaFX sdk lib> --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media -jar StickyCooked.jar
+- java --module-path <path_of_javaFX_sdk_lib> --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media -jar StickyCooked.jar
 
 # Document
 
