@@ -32,18 +32,18 @@ You can find detailed project information and the full project structure in STIC
 
 1. Programming Methodology and OOP Principles
 
-- The code structure is meticulously organized to adhere to core OOP concepts, ensuring high maintainability and ease of future expansion:
+  - The code structure is meticulously organized to adhere to core OOP concepts, ensuring high maintainability and ease of future expansion:
 
-- Encapsulation: Data security is prioritized, with internal class data protected and its access controlled strictly through public methods, commonly known as Getters and Setters.
+  - Encapsulation: Data security is prioritized, with internal class data protected and its access controlled strictly through public methods, commonly known as Getters and Setters.
 
-- Abstraction: The design utilizes dedicated packages (such as logic, drawing, and input) to clearly separate different concerns and functionalities within the game system, presenting a clean interface to other parts of the program.
+  - Abstraction: The design utilizes dedicated packages (such as logic, drawing, and input) to clearly separate different concerns and functionalities within the game system, presenting a clean interface to other parts of the program.
 
-- Inheritance & Polymorphism: These principles are presumed to be used to efficiently define hierarchies for various game objects (e.g., ingredients, tools, characters). This allows diverse objects to share common traits while implementing specific behaviors unique to their type.
+  - Inheritance & Polymorphism: These principles are presumed to be used to efficiently define hierarchies for various game objects (e.g., ingredients, tools, characters). This allows diverse objects to share common traits while implementing specific behaviors unique to their type.
 
 2. Core Java Libraries
 
-- The game relies on the standard Java platform (JSE) and incorporates key libraries necessary for modern game development:
+  - The game relies on the standard Java platform (JSE) and incorporates key libraries necessary for modern game development:
 
-- Standard Java Library (JSE): This forms the foundation of the project, utilized for fundamental programming needs, including complex data structures, basic input/output (I/O) operations, and various utility functions.
+  - Standard Java Library (JSE): This forms the foundation of the project, utilized for fundamental programming needs, including complex data structures, basic input/output (I/O) operations, and various utility functions.
 
-- Graphics/UI Library: The game interface requires a robust graphics solution. The interface is likely built using one of Java's powerful built-in graphics libraries, such as Swing or JavaFX, which handle the complex tasks of creating the game window, rendering the canvas, and managing drawing operations.
+  - Graphics/UI Library: The game interface requires a robust graphics solution. The interface is likely built using one of Java's powerful built-in graphics libraries, such as Swing or JavaFX, which handle the complex tasks of creating the game window, rendering the canvas, and managing drawing operations.
